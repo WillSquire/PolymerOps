@@ -43,7 +43,7 @@ This framework has been designed to have variables setup in one
 place and one place alone. By default the Vagrantfile has been 
 setup to parse Ansible's dev group vars (`dev.yml`) and dev 
 hosts (in `hosts.yml`) to configure the VM with. For example, 
-changing the IP address in `hosts.yml` will change the ip address
+changing the dev IP address in `hosts.yml` will change the ip address
 Vagrant uses for the VM, and changing the `domain` in `dev.yml` will
 change the domain used for the Vagrant VM. To achieve this, 
 Ansible's variables need to be kept in YAML format. By doing this, 

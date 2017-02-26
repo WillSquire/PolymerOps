@@ -1,5 +1,9 @@
 ---
 
+- name: Set Let's Encrypt repository
+  apt_repository:
+    repo: 'ppa:certbot/certbot'
+
 - name: Let's Encrypt client install
   apt:
-    name: python-letsencrypt-apache
+    name: letsencrypt
