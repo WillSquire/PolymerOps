@@ -28,10 +28,15 @@ Ansible outside of the VM, installation is required.
 
 - Create a new PolymerOps project into a new folder (replace `project-name` with your project name):
 
-      git clone git@github.com:WillSquire/PolymerOps.git project-name --depth=1 --branch=master
+  ```git clone git@github.com:WillSquire/PolymerOps.git project-name --depth=1 --branch=master```
 
 - Once download, it's advisable to delete the `.git` directory so you
 can setup your own version control.
+
+- Add existing polymer project to the `/app` folder, or create
+a new one using the Polymer CLI as instructed 
+[here](https://www.polymer-project.org/1.0/start/toolbox/set-up).
+
 
 ### Configuration
 Add project variables to the `group_vars/*` files that contain the variables used for each given environment. These variables are stored in the following files that correspond to their environment:
