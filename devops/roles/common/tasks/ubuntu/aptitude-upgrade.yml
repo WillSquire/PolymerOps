@@ -1,0 +1,7 @@
+---
+
+- include: aptitude-update.yml
+
+- name: Aptitude Packages Upgrade
+  apt:
+    upgrade: full

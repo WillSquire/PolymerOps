@@ -1,0 +1,25 @@
+---
+
+# Note that apt update should be done before
+# Ubuntu upgrade
+
+# Install update-manager-core to use
+# do-release-upgrade command
+- name: Update Manager Core Install
+  apt:
+    name: update-manager-core
+    state: latest
+
+# TODO: Sort out "Ubuntu Release Upgrade" error handling in failed_when
+# Upgrade to new Ubuntu release if available
+# and only error or mark as changed if
+# "No new release found" is not found in stdout
+- name: Ubuntu Release Upgrade
+  command: /usr/bin/do-release-upgrade -f DistUpgradeViewNonInteractive
+  register: ubuntu_upgrade
+  failed_when: ("No new release found" not in ubuntu_upgrade.stdout) and (ubuntu_upgrade.stdout != '')
+  changed_when: "'No new release found' not in ubuntu_upgrade.stdout"
+
+#- debug:
+#    var: ubuntu_upgrade
+#    verbosity: 2

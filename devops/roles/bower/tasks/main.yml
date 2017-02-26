@@ -1,0 +1,6 @@
+---
+
+- name: Bower Install
+  npm:
+    name: bower
+    global: yes

@@ -1,0 +1,33 @@
+---
+
+- name: "Set {{ domain }} virtualhost config"
+  template:
+    src: roles/apache/templates/virtualhost.conf.j2
+    dest: "/etc/apache2/sites-available/{{ domain }}.conf"
+
+- name: "Set error.log file"
+  file:
+    state: touch
+    path: "{{ logs_dir }}/error.log"
+    mode: 0664
+
+- name: "Set access.log file"
+  file:
+    state: touch
+    path: "{{ logs_dir }}/access.log"
+    mode: 0664
+
+- name: "Enable {{ domain }} virtualhost"
+  command: a2ensite {{ domain }}
+  args:
+    creates: "/etc/apache2/sites-enabled/{{ domain }}.conf"
+
+- name: "Disable default virtualhost"
+  command: a2dissite 000-default.conf
+  args:
+    removes: "/etc/apache2/sites-enabled/000-default.conf"
+
+- name: Restart Apache
+  service:
+    name: apache2
+    state: restarted

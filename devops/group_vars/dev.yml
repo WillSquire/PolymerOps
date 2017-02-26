@@ -1,0 +1,27 @@
+---
+
+# SSH
+ansible_ssh_user: ubuntu
+ansible_ssh_private_key_file: ../.vagrant/machines/192.168.33.12/virtualbox/private_key
+
+# Unix user
+user: example
+
+# Web
+webserver_user: www-data
+domain: example.dev
+admin_email: example@example.com
+http_port: 80
+
+# Directory
+project_dir: "/var/www/{{ user }}"
+document_root: "{{ project_dir }}/app"
+logs_dir: "{{ project_dir }}/logs"
+
+# Permissions
+files_owner: "ubuntu"
+files_group: "www-data"
+files_permissions: "0775"
+
+node_version: latest
+npm_version: latest

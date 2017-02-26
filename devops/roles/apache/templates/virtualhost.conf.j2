@@ -1,0 +1,8 @@
+<VirtualHost *:{{ http_port }}>
+    ServerAdmin {{ admin_email }}
+    ServerName {{ domain }}
+    ServerAlias www.{{ domain }}
+    DocumentRoot {{ document_root }}
+    ErrorLog {{ logs_dir }}/error.log
+    CustomLog {{ logs_dir }}/access.log combined
+</VirtualHost>

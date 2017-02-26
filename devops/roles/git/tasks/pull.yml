@@ -1,0 +1,11 @@
+---
+
+- name: Clone/pull GIT repo
+  git:
+    repo: "{{ git_repo }}"
+    dest: "{{ project_dir }}"
+    version: "{{ git_version }}"
+    accept_hostkey: yes
+    depth: 1
+    force: yes
+    key_file: "/home/{{ user }}/.ssh/id_rsa"

@@ -1,0 +1,31 @@
+---
+
+#- name: Set Node repository key
+#  apt_key:
+#    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+#
+#- name: Set Node repository
+#  apt_repository:
+#    repo: 'deb https://deb.nodesource.com/node_0.10 {{ ansible_distribution_release }} main'
+#
+#- name: Node Install
+#  apt:
+#    name: nodejs # nodejs package has $PATH issues
+
+- name: NPM Install
+  apt:
+    name: npm
+
+- name: Set NPM version
+  npm:
+    name: npm
+    global: yes
+    version: "{{ npm_version }}"
+
+- name: n install
+  npm:
+    name: n
+    global: yes
+
+- name: Node install
+  command: "n {{ node_version }}"

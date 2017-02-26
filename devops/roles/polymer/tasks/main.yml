@@ -1,0 +1,6 @@
+---
+
+- name: Polymer-CLI Install
+  npm:
+    name: polymer-cli
+    global: yes
