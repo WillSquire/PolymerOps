@@ -17,22 +17,20 @@ PolymerOps contains the following pre-configured tools:
 Setup
 -----
 ### Installation
-#### Install Vagrant
-Install [Vagrant] by following the install instructions
+
+- Install [Vagrant] by following the install instructions
 [here](https://www.vagrantup.com/downloads.html).
 
-#### Install Ansible (optional)
-Installing [Ansible] on your machine is optional as it's installed
-on the Vagrant VM by default during provisioning. However to run 
-Ansible outside of the VM, then follow the install instructions
-[here](http://docs.ansible.com/ansible/intro_installation.html).
+- (Optionally) install [Ansible] on your machine 
+[here](http://docs.ansible.com/ansible/intro_installation.html). 
+Ansible is installed on the Vagrant VM by default during provisioning. However to run 
+Ansible outside of the VM, installation is required.
 
-#### Create project
-Create a new PolymerOps project into a new folder (replace `project-name` with your project name):
+- Create a new PolymerOps project into a new folder (replace `project-name` with your project name):
 
-    git clone git@github.com:WillSquire/PolymerOps.git project-name --depth=1 --branch=master
+      git clone git@github.com:WillSquire/PolymerOps.git project-name --depth=1 --branch=master
 
-Once download, it's advisable to delete the `.git` directory so you
+- Once download, it's advisable to delete the `.git` directory so you
 can setup your own version control.
 
 ### Configuration
