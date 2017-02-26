@@ -4,3 +4,11 @@
 .ssh
 logs
 *.log
+deploy.retry
+
+# Ignore sensitive data
+group_vars/*
+!group_vars/dev.yml
+host_vars/*
+keys
+

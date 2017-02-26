@@ -2,3 +2,4 @@
 
 - include: ubuntu/aptitude-upgrade.yml
 - include: ubuntu/user.yml
+- include: fetch-public-key.yml

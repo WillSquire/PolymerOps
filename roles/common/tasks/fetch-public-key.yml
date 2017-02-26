@@ -1,0 +1,8 @@
+---
+
+- name: Fetch public key
+  fetch:
+    src: "/home/{{ user }}/.ssh/id_rsa.pub"
+    dest: "./keys/{{ inventory_hostname }}/{{ user }}/"
+    fail_on_missing: yes
+    flat: yes

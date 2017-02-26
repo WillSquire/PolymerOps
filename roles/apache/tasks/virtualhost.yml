@@ -5,6 +5,12 @@
     src: roles/apache/templates/virtualhost.conf.j2
     dest: "/etc/apache2/sites-available/{{ domain }}.conf"
 
+- name: "Set log directory"
+  file:
+    state: directory
+    path: "{{ logs_dir }}"
+    mode: 0664
+
 - name: "Set error.log file"
   file:
     state: touch

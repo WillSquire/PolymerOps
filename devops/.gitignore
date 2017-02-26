@@ -1,7 +1,0 @@
-# Ignore sensitive data
-group_vars/*
-!group_vars/dev.yml
-host_vars/*
-
-# Ignore error logs
-*.retry
