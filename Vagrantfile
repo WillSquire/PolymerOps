@@ -16,8 +16,8 @@ require 'yaml'
 #
 
 # Import Vagrant variable values from Ansible YAML files
-hosts = YAML.load_file 'devops/hosts/hosts.yml'
-settings = YAML.load_file 'devops/group_vars/dev.yml'
+hosts = YAML.load_file 'hosts/hosts.yml'
+settings = YAML.load_file 'group_vars/dev.yml'
 
 # Set variables
 machines = hosts['dev']['hosts']
@@ -78,9 +78,9 @@ Vagrant.configure("2") do |config|
         # file matches up with VM definition. Playbook is also
         # found on the VM when using ansible_local (due to
         # Ansible being run on the machine).
-        ansible.provisioning_path = "#{sync_dir}/devops"
-        ansible.inventory_path = "#{sync_dir}/devops/hosts"
-        ansible.playbook = "#{sync_dir}/devops/deploy.yml"
+        ansible.provisioning_path = "#{sync_dir}"
+        ansible.inventory_path = "#{sync_dir}/hosts"
+        ansible.playbook = "#{sync_dir}/deploy.yml"
         ansible.limit = "dev" # Vagrant passes Ansible limit flag without value otherwise
         ansible.extra_vars = { # Tell ansible to operate on machine it's running from (use with ansible_local)
             ansible_connection: "local"

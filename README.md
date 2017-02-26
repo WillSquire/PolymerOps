@@ -71,6 +71,11 @@ Production:
 
     ansible-playbook deploy.yml -l production
     
+Todo
+----
+- Add HTTP2 Push support (Apache is already setup, just needs config)
+- Test Windows support (so far tested on Mac. Linux *shouldn't* have issues)
+    
 License
 -------
 PolymerOps uses a BSD-like license that is available 
