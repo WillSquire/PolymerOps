@@ -16,12 +16,7 @@
   apt:
     name: npm
 
-- name: Set NPM version
-  npm:
-    name: npm
-    global: yes
-    version: "{{ npm_version }}"
-
+# Install n before NPM update as non-apt version requires Node
 - name: n install
   npm:
     name: n
@@ -29,3 +24,9 @@
 
 - name: Node install
   command: "n {{ node_version }}"
+
+- name: Set NPM version
+  npm:
+    name: npm
+    global: yes
+    version: "{{ npm_version }}"

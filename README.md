@@ -18,22 +18,22 @@ Setup
 -----
 ### Installation
 
-- Install [Vagrant] by following the install instructions
+1. Install [Vagrant] by following the install instructions
 [here](https://www.vagrantup.com/downloads.html).
 
-- (Optionally) install [Ansible] on your machine 
+2. (Optionally) install [Ansible] on your machine 
 [here](http://docs.ansible.com/ansible/intro_installation.html). 
 Ansible is installed on the Vagrant VM by default during provisioning. However to run 
 Ansible outside of the VM, installation is required.
 
-- Create a new PolymerOps project into a new folder (replace `project-name` with your project name):
+3. Create a new PolymerOps project into a new folder (replace `project-name` with your project name):
 
-  ```git clone git@github.com:WillSquire/PolymerOps.git project-name --depth=1 --branch=master```
+       git clone git@github.com:WillSquire/PolymerOps.git project-name --depth=1 --branch=master
 
-- Once download, it's advisable to delete the `.git` directory so you
+4. Once download, it's advisable to delete the `.git` directory so you
 can setup your own version control.
 
-- Add existing polymer project to the `/app` folder, or create
+5. Add existing polymer project to the `/app` folder, or create
 a new one using the Polymer CLI as instructed 
 [here](https://www.polymer-project.org/1.0/start/toolbox/set-up).
 
