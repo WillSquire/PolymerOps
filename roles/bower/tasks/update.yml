@@ -1,0 +1,5 @@
+---
+
+- name: Update Bower packages
+  bower:
+    path: "{{ document_root }}"

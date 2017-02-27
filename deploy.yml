@@ -28,5 +28,6 @@
   tasks:
     - include: roles/git/tasks/pull.yml
       when: "'dev' not in group_names" # Don't GIT pull on development machines
+    - include: roles/bower/tasks/update.yml
     - include: roles/apache/tasks/virtualhost.yml
     - include: roles/letsencrypt/tasks/main.yml
