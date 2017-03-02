@@ -1,0 +1,32 @@
+---
+
+# SSH
+ansible_ssh_user: root
+ansible_ssh_private_key_file: /path/to/.ssh/id_rsa
+
+# Unix user
+user: example
+
+# Web
+webserver_user: www-data
+domain: example.dev
+admin_email: example@example.com
+http_port: 80
+
+# Directory
+project_dir: "/var/www/{{ user }}"
+#document_root: "{{ project_dir }}/app/build/bundled" # For HTTP
+document_root: "{{ project_dir }}/app/build/unbundled" # For HTTP2 Push
+logs_dir: "{{ project_dir }}/logs"
+
+# Permissions
+files_owner: "root"
+files_group: "www-data"
+files_permissions: "0775"
+
+node_version: latest
+npm_version: latest
+
+# GIT
+git_repo: git@example.com:example.git
+git_version: master

@@ -1,4 +1,5 @@
 <VirtualHost *:{{ http_port }}>
+    Protocols h2 http/1.1
     ServerAdmin {{ admin_email }}
     ServerName {{ domain }}
     ServerAlias www.{{ domain }}

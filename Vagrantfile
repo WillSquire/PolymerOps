@@ -7,8 +7,8 @@ require 'yaml'
 ######################################################
 #
 # If using rync to share project directory, remember to
-# run `rsync-auto` to 'watch' project directory files
-# and rsync automatically.
+# run `vagrant rsync-auto` to 'watch' project directory
+# files and rsync automatically.
 #
 # Important notice - If box is destroyed and restored,
 # ensure known_hosts is updated to reflect: I.e. run:

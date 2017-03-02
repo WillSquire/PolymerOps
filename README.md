@@ -4,10 +4,11 @@ A DevOps framework for Polymer.
 
 Introduction
 ------------
-PolymerOps is a DevOps project for [Polymer] that 'wraps' your 
-Polymer project up to automate tasks like running, deploying and 
-configuring Polymer from development to production environments. 
-Allowing for a faster and safer development pipeline. 
+PolymerOps is a DevOps project for [Polymer] that automates tasks 
+like running, deploying and configuring Polymer from development 
+to production environments, as well as providing a local 
+development virtual machine (vm). Allowing for a faster and safer 
+development pipeline. 
 
 PolymerOps contains the following pre-configured tools:
 
@@ -17,47 +18,64 @@ PolymerOps contains the following pre-configured tools:
 Installation
 ------------
 
-1. Install [Vagrant] by following the install instructions
-[here](https://www.vagrantup.com/downloads.html).
+1. [Install Vagrant](https://www.vagrantup.com/downloads.html)
 
-2. (Optionally) install [Ansible] on your machine 
-[here](http://docs.ansible.com/ansible/intro_installation.html). 
-Ansible is installed on the Vagrant VM by default during provisioning. However to run 
-Ansible outside of the VM, installation is required.
+2. (Optional) [Install Ansible](http://docs.ansible.com/ansible/intro_installation.html). 
+(Because Ansible is installed on the Vagrant VM by default it can 
+be used from there)
 
-3. Create a new PolymerOps project into a new folder (replace `project-name` with your project name):
+3. Create a new PolymerOps project (replace `project-name` with your project name):
 
    ```git clone git@github.com:WillSquire/PolymerOps.git project-name --depth=1 --branch=master```
 
-4. Once download, it's advisable to delete the `.git` directory so you
-can setup your own version control.
+4. Delete the `.git` directory so you can setup your own version 
+control.
 
-5. Add existing polymer project to the `/app` folder, or create
+5. Add an existing polymer project to the `/app` folder, or create
 a new one using the Polymer CLI as instructed 
 [here](https://www.polymer-project.org/1.0/start/toolbox/set-up).
 
 
 Configuration
 -------------
-This framework has been designed to have variables setup in one 
-place and one place alone. By default the Vagrantfile has been 
-setup to parse Ansible's dev group vars (`dev.yml`) and dev 
-hosts (in `hosts.yml`) to configure the VM with. For example, 
-changing the dev IP address in `hosts.yml` will change the ip address
-Vagrant uses for the VM, and changing the `domain` in `dev.yml` will
-change the domain used for the Vagrant VM. To achieve this, 
-Ansible's variables need to be kept in YAML format. By doing this, 
-Vagrant and Ansible don't need to be 'married up' from both sides.
+### Vagrant
+PolymerOps has been designed to set variables in one 
+place. As such, Vagrant uses Ansible's config files (`dev.yml` 
+and `hosts.yml`) to configure the VM. 
 
-Add project variables to the `group_vars/*` files that contain the variables used for each given environment. These variables are stored in the following files that correspond to their environment:
+For example, to change the Vagrant VM's IP address open up 
+`hosts.yml` and set the `dev` host group IP:
+
+    dev:
+      hosts:
+        192.168.33.12:
+
+To change the development VM's domain, set the `domain` variable 
+in `dev.yml`:
+
+    domain: example.dev
+
+To achieve this, Ansible's variables need to be kept in YAML 
+format. By doing this, Vagrant and Ansible don't need to be 
+'married up' from both sides.
+
+### Ansible
+As per Ansible's 
+[documentation](http://docs.ansible.com/ansible/index.html),
+machine group variables go in the `group_vars/*` directory and 
+use the group name as the file name (i.e. `dev.yml`).
+ 
+Development, staging and production variables are stored in 
+the following files that correspond to their environment:
 
 - dev.yml
 - staging.yml
 - production.yml
  
-These files should be stored inside of the `group_vars` directory for Ansible to find them. 
-
-These files contain sensitive information, so are ignored by GIT by default.
+These files should be stored inside of the `group_vars` 
+directory for Ansible to find them. Because these files contain 
+sensitive information, all (apart from dev variables) are 
+ignored by GIT by default.
 
 Usage
 -----

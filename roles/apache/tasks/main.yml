@@ -10,10 +10,16 @@
   apt:
     name: apache2
 
-- name: Enable mod_http2
+- name: Enable Apache modules
   apache2_module:
-    name: http2
+    name: "{{ item }}"
     state: present
+  with_items:
+     - deflate
+     - expires
+     - headers
+     - http2
+     - socache_shmcb
 
 - name: Enable Apache startup
   service:
