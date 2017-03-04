@@ -20,11 +20,11 @@ Installation
 
 1. [Install Vagrant](https://www.vagrantup.com/downloads.html)
 
-2. (Optional) [Install Ansible](http://docs.ansible.com/ansible/intro_installation.html). 
-(Because Ansible is installed on the Vagrant VM by default it can 
-be used from there)
+2. [Install Ansible](http://docs.ansible.com/ansible/intro_installation.html)
+(Optional). Ansible is installed on the Vagrant VM by default, so 
+can be run from there
 
-3. Create a new PolymerOps project (replace `project-name` with your project name):
+3. Clone PolymerOps project (replace `project-name` with your project name):
 
    ```git clone git@github.com:WillSquire/PolymerOps.git project-name --depth=1 --branch=master```
 
