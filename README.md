@@ -28,8 +28,10 @@ can be run from there
 
    ```git clone git@github.com:WillSquire/PolymerOps.git project-name --depth=1 --branch=master```
 
-4. Delete the `.git` directory so you can setup your own version 
-control.
+4. Move into your `project-name` folder and delete the `.git` 
+directory so you can setup your own version control:
+    
+    ```cd project-name && rm -rf .git```
 
 5. Add an existing polymer project to the `/app` folder, or create
 a new one using the Polymer CLI as instructed 
