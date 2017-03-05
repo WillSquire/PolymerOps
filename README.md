@@ -28,10 +28,12 @@ the full stack:
     - mod_expires
     - mod_headers
     - mod_http2 (HTTP2 Push compatible)
-    - mod_socache_shmcb
+    - mod_socache_shmcb (Key-value caching)
 - Node
-- Bower
-- Polymer-CLI
+- NPM
+    - n (Node version control)
+    - Bower
+    - Polymer-CLI
 
 Installation
 ------------
@@ -135,6 +137,8 @@ Todo
 ----
 - Add HTTP2 Push (Apache is already setup, just needs Polymer config i.e. add `rel="preload"` to links where needed)
 - Test Windows support (so far tested on Mac. Linux *shouldn't* have issues)
+- Add/configure firewall
+- Add fail2ban
     
 License
 -------
