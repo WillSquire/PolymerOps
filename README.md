@@ -15,6 +15,24 @@ PolymerOps contains the following pre-configured tools:
 - [Vagrant] for local development on a virtual server.
 - [Ansible] for all provisioning and configuration management.
 
+Stack
+-----
+
+Vagrant uses Ubuntu as the OS and Ansible has been configured for
+use with a Ubuntu system (with aim to branch out in future). Here's
+the full stack:
+
+- Ubuntu 16
+- Apache
+    - mod_deflate
+    - mod_expires
+    - mod_headers
+    - mod_http2 (HTTP2 Push compatible)
+    - mod_socache_shmcb
+- Node
+- Bower
+- Polymer-CLI
+
 Installation
 ------------
 
@@ -81,6 +99,19 @@ ignored by GIT by default.
 
 Usage
 -----
+### Development
+To start the local development VM, run:
+
+    vagrant up
+
+Vagrant uses rsync one way (host machine to VM guest) to sync
+the project to the VM (as this is currently the fastest method). 
+Other methods are included in the Vagrantfile if 2-way sync is 
+needed. To automatically sync on file changes, run:
+
+    vagrant rsync-auto
+
+### Depolyment
 To deploy the project to all machines execute the following command:
 
     ansible-playbook deploy.yml
@@ -102,7 +133,7 @@ Production:
     
 Todo
 ----
-- Add HTTP2 Push support (Apache is already setup, just needs config)
+- Add HTTP2 Push (Apache is already setup, just needs Polymer config i.e. add `rel="preload"` to links where needed)
 - Test Windows support (so far tested on Mac. Linux *shouldn't* have issues)
     
 License
@@ -111,5 +142,5 @@ PolymerOps uses a BSD-like license that is available
 [here](./LICENSE.txt).
 
 [polymer]: https://www.polymer-project.org "Polymer"
-[ansible]: https://www.ansible.com/ "Ansible"
-[vagrant]: https://www.vagrantup.com/ "Vagrant"
+[ansible]: https://www.ansible.com "Ansible"
+[vagrant]: https://www.vagrantup.com "Vagrant"
