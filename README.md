@@ -7,8 +7,7 @@ Introduction
 PolymerOps is a DevOps project for [Polymer] that automates tasks 
 like running, deploying and configuring Polymer from development 
 to production environments, as well as providing a local 
-development virtual machine (vm). Allowing for a faster and safer 
-development pipeline. 
+development environment VM (virtual machine).
 
 PolymerOps contains the following pre-configured tools:
 
@@ -17,12 +16,10 @@ PolymerOps contains the following pre-configured tools:
 
 Stack
 -----
+Currently built for Ubuntu. Servers require this OS. 
+Here's the full stack:
 
-Vagrant uses Ubuntu as the OS and Ansible has been configured for
-use with a Ubuntu system (with aim to branch out in future). Here's
-the full stack:
-
-- Ubuntu 16
+- Ubuntu
 - Apache
     - mod_deflate
     - mod_expires
@@ -105,11 +102,21 @@ Usage
 To start the local development VM, run:
 
     vagrant up
+    
+Update VM to machine level changes (i.e. IP):
 
-Vagrant uses rsync one way (host machine to VM guest) to sync
-the project to the VM (as this is currently the fastest method). 
-Other methods are included in the Vagrantfile if 2-way sync is 
-needed. To automatically sync on file changes, run:
+    vagrant reload
+
+Update VM to application level changes (i.e. HTTP port):
+
+    vagrant provision
+
+In the Vagrantfile there is an rsync (one way - host machine to 
+VM guest) setting that can be used over the default (two way) 
+setting. It is currently the fastest way to sync, but does remove
+sync capability from VM guest to host machine. If using the rsync
+method instead, run the following to automatically sync files upon 
+change:
 
     vagrant rsync-auto
 
@@ -133,12 +140,12 @@ Production:
 
     ansible-playbook deploy.yml -l production
     
-Todo
-----
-- Add HTTP2 Push (Apache is already setup, just needs Polymer config i.e. add `rel="preload"` to links where needed)
+Future
+------
 - Test Windows support (so far tested on Mac. Linux *shouldn't* have issues)
 - Add/configure firewall
 - Add fail2ban
+- Consider switching Apache to NGINX when NGINX has HTTP2 Push support
     
 License
 -------

@@ -6,7 +6,7 @@
   apt_repository:
     repo: 'ppa:ondrej/apache2'
 
-- name: Apache Install
+- name: Apache install
   apt:
     name: apache2
 

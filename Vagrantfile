@@ -58,15 +58,13 @@ Vagrant.configure("2") do |config|
             node.vm.network :private_network, ip: "#{i.first}"
             node.vm.hostname = "#{domain}"
 
-            # File syncing - Note that rsync is the fastest method
-            #node.vm.synced_folder ".", "#{sync_dir}", id: "vagrant-root", :owner => "www-data", :group => "www-data"
-            #node.vm.synced_folder ".", "#{sync_dir}", :nfs => true, id: "vagrant-root"
-            node.vm.synced_folder ".", "#{sync_dir}", type: "rsync",
-                rsync__exclude: ".git/",
-                id: "vagrant-root",
-                :owner => "ubuntu",
-                :group => "www-data",
-                mount_options: ["dmode=775,fmode=775"]
+            # File syncing - Note:
+            # - Default is most reliable method, but slowest
+            # - NFS is faster than default, but doesn't work on Windows
+            # - rsync is the fastest method, but only syncs 1 way
+            node.vm.synced_folder ".", "#{sync_dir}", :group => "www-data", mount_options: ["dmode=775,fmode=775"]
+            #node.vm.synced_folder ".", "#{sync_dir}", type: "nfs", mount_options: ["dmode=775,fmode=775"]
+            #node.vm.synced_folder ".", "#{sync_dir}", type: "rsync", rsync__exclude: ".git/", id: "vagrant-root", :owner => "ubuntu", :group => "www-data", mount_options: ["dmode=775,fmode=775"]
 
         end
     end
