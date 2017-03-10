@@ -14,6 +14,29 @@ PolymerOps contains the following pre-configured tools:
 - [Vagrant] for local development on a virtual server.
 - [Ansible] for all provisioning and configuration management.
 
+Requires
+--------
+1. [Vagrant install](https://www.vagrantup.com/downloads.html)
+
+2. [Ansible install](http://docs.ansible.com/ansible/intro_installation.html)
+(Optional). Ansible is installed on the Vagrant VM by default, so 
+can be run from there
+
+Installation
+------------
+1. Clone PolymerOps project (replace `project-name` with your project name):
+
+   ```git clone git@github.com:WillSquire/PolymerOps.git project-name --depth=1 --branch=master```
+
+2. Move into your `project-name` folder and delete the `.git` 
+directory so you can setup your own version control:
+    
+    ```cd project-name && rm -rf .git```
+
+3. Add an existing polymer project to the `/app` folder, or create
+a new one using the Polymer CLI as instructed 
+[here](https://www.polymer-project.org/1.0/start/toolbox/set-up).
+
 Stack
 -----
 Currently built for Ubuntu. Servers require this OS. 
@@ -25,35 +48,13 @@ Here's the full stack:
     - mod_expires
     - mod_headers
     - mod_http2 (HTTP2 Push compatible)
+    - mod_rewrite
     - mod_socache_shmcb (Key-value caching)
 - Node
 - NPM
     - n (Node version control)
     - Bower
     - Polymer-CLI
-
-Installation
-------------
-
-1. [Install Vagrant](https://www.vagrantup.com/downloads.html)
-
-2. [Install Ansible](http://docs.ansible.com/ansible/intro_installation.html)
-(Optional). Ansible is installed on the Vagrant VM by default, so 
-can be run from there
-
-3. Clone PolymerOps project (replace `project-name` with your project name):
-
-   ```git clone git@github.com:WillSquire/PolymerOps.git project-name --depth=1 --branch=master```
-
-4. Move into your `project-name` folder and delete the `.git` 
-directory so you can setup your own version control:
-    
-    ```cd project-name && rm -rf .git```
-
-5. Add an existing polymer project to the `/app` folder, or create
-a new one using the Polymer CLI as instructed 
-[here](https://www.polymer-project.org/1.0/start/toolbox/set-up).
-
 
 Configuration
 -------------
@@ -95,6 +96,12 @@ These files should be stored inside of the `group_vars`
 directory for Ansible to find them. Because these files contain 
 sensitive information, all (apart from dev variables) are 
 ignored by GIT by default.
+
+### Apache
+As Polymer handles 404s on the frontend, Apache is setup to 
+redirect all traffic without a file extension (or requests 
+that don't contain a `.` followed by at least one character) 
+to the app entry point (`index.html` by default).
 
 Usage
 -----
@@ -142,7 +149,6 @@ Production:
     
 Future
 ------
-- Redirect all traffic without a file extension (or requests that don't contain a `.`) to the app entry point (i.e. index.html)
 - Test Windows support (so far tested on Mac. Linux *shouldn't* have issues)
 - Add Polymer-CLI build upon deploying to production
 - Add conditional logic for Ansible to prevent it saying 'changed' when the state hasn't (i.e. logs creation)
