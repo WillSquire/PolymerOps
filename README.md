@@ -19,7 +19,7 @@ Stack
 Currently built for Ubuntu. Servers require this OS. 
 Here's the full stack:
 
-- Ubuntu
+- Ubuntu 16.04 LTS (Xenial Xerus)
 - Apache
     - mod_deflate
     - mod_expires
@@ -143,6 +143,8 @@ Production:
 Future
 ------
 - Test Windows support (so far tested on Mac. Linux *shouldn't* have issues)
+- Add Polymer-CLI build upon deploying to production
+- Add conditional logic for Ansible to prevent it saying 'changed' when the state hasn't (i.e. logs creation)
 - Add/configure firewall
 - Add fail2ban
 - Consider switching Apache to NGINX when NGINX has HTTP2 Push support

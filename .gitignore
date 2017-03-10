@@ -11,4 +11,3 @@ group_vars/*
 !group_vars/dev.yml
 host_vars/*
 keys
-
