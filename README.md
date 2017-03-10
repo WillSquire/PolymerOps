@@ -40,7 +40,7 @@ into the `/app` folder.
 Stack
 -----
 Currently built for Ubuntu. Servers require this OS. 
-Here's the full stack:
+Here's the fully deployed stack:
 
 - Ubuntu 16.04 LTS (Xenial Xerus)
 - Apache
@@ -93,7 +93,7 @@ sensitive information, all (apart from dev variables) are
 ignored by GIT by default.
 
 ### Apache
-As Polymer handles 404s on the frontend, Apache is setup to 
+Polymer handles 404s on the frontend, as such Apache is setup to 
 redirect all traffic without a file extension (or requests 
 that don't contain a `.` followed by at least one character) 
 to the app entry point (`index.html` by default).
