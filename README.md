@@ -16,26 +16,26 @@ PolymerOps contains the following pre-configured tools:
 
 Requires
 --------
-1. [Vagrant install](https://www.vagrantup.com/downloads.html)
+1. [Install Vagrant](https://www.vagrantup.com/downloads.html)
 
-2. [Ansible install](http://docs.ansible.com/ansible/intro_installation.html)
+2. [Install Ansible](http://docs.ansible.com/ansible/intro_installation.html)
 (Optional). Ansible is installed on the Vagrant VM by default, so 
 can be run from there
 
 Installation
 ------------
-1. Clone PolymerOps project (replace `project-name` with your project name):
+1. Clone PolymerOps project (replace `project-name` with project name):
 
    ```git clone git@github.com:WillSquire/PolymerOps.git project-name --depth=1 --branch=master```
 
-2. Move into your `project-name` folder and delete the `.git` 
-directory so you can setup your own version control:
+2. Move into chosen `project-name` folder and delete the `.git` 
+directory:
     
     ```cd project-name && rm -rf .git```
 
-3. Add an existing polymer project to the `/app` folder, or create
-a new one using the Polymer CLI as instructed 
-[here](https://www.polymer-project.org/1.0/start/toolbox/set-up).
+3. Add existing polymer project or create a new one 
+[using the Polymer CLI](https://www.polymer-project.org/1.0/start/toolbox/set-up)
+into the `/app` folder.
 
 Stack
 -----
@@ -59,12 +59,12 @@ Here's the full stack:
 Configuration
 -------------
 ### Vagrant
-PolymerOps has been designed to set variables in one 
-place. As such, Vagrant uses Ansible's config files (`dev.yml` 
-and `hosts.yml`) to configure the VM. 
-
-For example, to change the Vagrant VM's IP address open up 
-`hosts.yml` and set the `dev` host group IP:
+PolymerOps is designed to avoid setting the same variables 
+in multiple locations. As such, Vagrant uses Ansible's config 
+files (`dev.yml` and `hosts.yml`) to configure the VM, and thus 
+these need to be kept in YAML format. To change the Vagrant 
+VM's IP address for example, open up `hosts.yml` and set the 
+`dev` host group IP:
 
     dev:
       hosts:
@@ -75,18 +75,13 @@ in `dev.yml`:
 
     domain: example.dev
 
-To achieve this, Ansible's variables need to be kept in YAML 
-format. By doing this, Vagrant and Ansible don't need to be 
-'married up' from both sides.
-
 ### Ansible
 As per Ansible's 
 [documentation](http://docs.ansible.com/ansible/index.html),
 machine group variables go in the `group_vars/*` directory and 
-use the group name as the file name (i.e. `dev.yml`).
- 
-Development, staging and production variables are stored in 
-the following files that correspond to their environment:
+use the group name as the file name (i.e. `dev.yml`). Development, 
+staging and production variables are stored in the following 
+files that correspond to their environment:
 
 - dev.yml
 - staging.yml
