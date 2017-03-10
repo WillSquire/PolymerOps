@@ -12,6 +12,7 @@ webserver_user: www-data
 domain: example.dev
 admin_email: example@example.com
 http_port: 80
+entrypoint: "/index.html"
 
 # Directory
 project_dir: "/var/www/{{ user }}"
