@@ -142,6 +142,7 @@ Production:
     
 Future
 ------
+- Redirect all traffic without a file extension (or requests that don't contain a `.`) to the app entry point (i.e. index.html)
 - Test Windows support (so far tested on Mac. Linux *shouldn't* have issues)
 - Add Polymer-CLI build upon deploying to production
 - Add conditional logic for Ansible to prevent it saying 'changed' when the state hasn't (i.e. logs creation)
