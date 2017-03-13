@@ -7,7 +7,12 @@ Introduction
 PolymerOps is a DevOps project for [Polymer] that automates tasks 
 like running, deploying and configuring Polymer from development 
 to production environments, as well as providing a local 
-development environment VM (virtual machine).
+development environment VM (virtual machine). Whilst products like
+[Firebase](https://firebase.google.com) and 
+[GoogleCloud](https://cloud.google.com) are awesome pieces of
+technology, sometimes you just want to host it yourself or
+have control over your infrastructure. That's where PolymerOps
+comes in, it provides that base.
 
 PolymerOps contains the following pre-configured tools:
 
