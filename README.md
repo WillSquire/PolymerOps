@@ -6,20 +6,21 @@ Introduction
 ------------
 PolymerOps is a DevOps project for [Polymer] that automates tasks 
 like running, deploying and configuring Polymer from development 
-to production environments, as well as providing a local 
-development environment VM (virtual machine). Whilst products like
+to production server environments, as well as providing a local 
+development environment VM (virtual machine). Products like
 [Firebase](https://firebase.google.com) and 
 [GoogleCloud](https://cloud.google.com) are awesome pieces of
-technology, sometimes you just want to host it yourself or
-have control over your infrastructure. That's where PolymerOps
-comes in, it provides that base.
+technology, but if you want to host it and control the 
+infrastructure yourself, then PolymerOps provides a strong base 
+for doing so.
 
-PolymerOps contains the following pre-configured tools:
+PolymerOps contains the following pre-configured tools for 
+use with Polymer:
 
 - [Vagrant] for local development on a virtual server.
 - [Ansible] for all provisioning and configuration management.
 
-Requires
+Setup
 --------
 1. [Install Vagrant](https://www.vagrantup.com/downloads.html)
 
@@ -27,18 +28,16 @@ Requires
 (Optional). Ansible is installed on the Vagrant VM by default, so 
 can be run from there
 
-Installation
-------------
-1. Clone PolymerOps project (replace `project-name` with project name):
+3. Clone PolymerOps project (replace `project-name` with project name):
 
    ```git clone git@github.com:WillSquire/PolymerOps.git project-name --depth=1 --branch=master```
 
-2. Move into chosen `project-name` folder and delete the `.git` 
+4. Move into chosen `project-name` folder and delete the `.git` 
 directory:
     
     ```cd project-name && rm -rf .git```
 
-3. Add existing polymer project or create a new one 
+5. Add existing polymer project or create a new one 
 [using the Polymer CLI](https://www.polymer-project.org/1.0/start/toolbox/set-up)
 into the `/app` folder.
 
@@ -64,10 +63,10 @@ Here's the fully deployed stack:
 Configuration
 -------------
 ### Vagrant
-PolymerOps is designed to avoid setting the same variables 
-in multiple locations. As such, Vagrant uses Ansible's config 
-files (`dev.yml` and `hosts.yml`) to configure the VM, and thus 
-these need to be kept in YAML format. To change the Vagrant 
+PolymerOps avoids setting the same variables in multiple 
+locations. As such, Vagrant reads Ansible's config 
+files (`dev.yml` and `hosts.yml`) in the `Vagrantfile`. Thus, 
+these files should be kept in YAML format. To change the Vagrant 
 VM's IP address for example, open up `hosts.yml` and set the 
 `dev` host group IP:
 
@@ -97,6 +96,11 @@ directory for Ansible to find them. Because these files contain
 sensitive information, all (apart from dev variables) are 
 ignored by GIT by default.
 
+`hosts/hosts.yml` contain the server details and what group 
+they belong to. These have been done in YAML format so
+Vagrant can read them (see Ansible's 
+[example of YAML format for hosts](https://github.com/ansible/ansible/blob/devel/examples/hosts.yaml)).
+
 ### Apache
 Polymer handles 404s on the frontend, as such Apache is setup to 
 redirect all traffic without a file extension (or requests 
@@ -110,11 +114,12 @@ To start the local development VM, run:
 
     vagrant up
     
-Update VM to machine level changes (i.e. IP):
+Update changes from the Vagrant config (*remember: Ansible 
+variables can affect this, i.e. development IP*):
 
     vagrant reload
 
-Update VM to application level changes (i.e. HTTP port):
+Update changes from the Ansible config (i.e. HTTP port):
 
     vagrant provision
 
