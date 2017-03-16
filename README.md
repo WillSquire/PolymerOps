@@ -48,6 +48,7 @@ Currently built for Ubuntu. Servers require this OS.
 Here's the fully deployed stack:
 
 - Ubuntu 16.04 LTS (Xenial Xerus)
+- UFW
 - Apache
     - mod_deflate
     - mod_expires
@@ -105,16 +106,16 @@ Vagrant can read them (see Ansible's
 Below are details regarding the configuration performed by 
 Ansible for each piece of technology installed:
 
+#### UFW
+Firewall defaults to `deny` all traffic in and `allow` all 
+traffic out on all ports apart from `22`, `80` and `443` on `tcp`, 
+which are set to `limit`, `allow` and `allow` respectively.
+
 #### Apache
 Polymer handles 404s on the frontend, as such Apache is setup to 
 redirect all traffic without a file extension (or requests 
 that don't contain a `.` followed by at least one character) 
 to the app entry point (`index.html` by default).
-
-#### UFW
-Firewall defaults to `deny` all traffic in and `allow` all 
-traffic out on all ports apart from `22`, `80` and `443` on `tcp`, 
-which are set to `limit`, `allow` and `allow` respectively.
 
 Usage
 -----
