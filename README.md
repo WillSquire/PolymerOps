@@ -102,13 +102,16 @@ they belong to. These have been done in YAML format so
 Vagrant can read them (see Ansible's 
 [example of YAML format for hosts](https://github.com/ansible/ansible/blob/devel/examples/hosts.yaml)).
 
-### Apache
+Below are details regarding the configuration performed by 
+Ansible for each piece of technology installed:
+
+#### Apache
 Polymer handles 404s on the frontend, as such Apache is setup to 
 redirect all traffic without a file extension (or requests 
 that don't contain a `.` followed by at least one character) 
 to the app entry point (`index.html` by default).
 
-### UFW
+#### UFW
 Firewall defaults to `deny` all traffic in and `allow` all 
 traffic out on all ports apart from `22`, `80` and `443` on `tcp`, 
 which are set to `limit`, `allow` and `allow` respectively.
