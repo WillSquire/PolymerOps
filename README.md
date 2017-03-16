@@ -110,7 +110,7 @@ to the app entry point (`index.html` by default).
 
 ### UFW
 Firewall defaults to `deny` all traffic in and `allow` all 
-traffic out on all ports apart from `22`, `80` and `443`, 
+traffic out on all ports apart from `22`, `80` and `443` on `tcp`, 
 which are set to `limit`, `allow` and `allow` respectively.
 
 Usage
