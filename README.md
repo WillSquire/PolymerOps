@@ -108,6 +108,11 @@ redirect all traffic without a file extension (or requests
 that don't contain a `.` followed by at least one character) 
 to the app entry point (`index.html` by default).
 
+### UFW
+Firewall defaults to `deny` all traffic in and `allow` all 
+traffic out on all ports apart from `22`, `80` and `443`, 
+which are set to `limit`, `allow` and `allow` respectively.
+
 Usage
 -----
 ### Development
@@ -158,7 +163,6 @@ Future
 - Test Windows support (so far tested on Mac. Linux *shouldn't* have issues)
 - Add Polymer-CLI build upon deploying to production
 - Add conditional logic for Ansible to prevent it saying 'changed' when the state hasn't (i.e. logs creation)
-- Add/configure firewall
 - Add fail2ban
 - Consider switching Apache to NGINX when NGINX has HTTP2 Push support
     

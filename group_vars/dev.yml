@@ -3,6 +3,7 @@
 # SSH
 ansible_ssh_user: ubuntu
 ansible_ssh_private_key_file: .vagrant/machines/192.168.33.12/virtualbox/private_key
+ansible_ssh_port: 22
 
 # Unix user
 user: example
@@ -14,7 +15,7 @@ admin_email: example@example.com
 http_port: 80
 entrypoint: "/index.html"
 
-# Directory
+# Directories
 project_dir: "/var/www/{{ user }}"
 document_root: "{{ project_dir }}/app"
 logs_dir: "{{ project_dir }}/logs"

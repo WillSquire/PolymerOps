@@ -1,0 +1,28 @@
+---
+
+- name: UFW install
+  apt:
+    name: ufw
+
+- name: Set UFW default rules
+  ufw:
+    direction: "{{ item.direction }}"
+    policy: "{{ item.policy }}"
+  with_items:
+    - { direction: 'incoming', policy: 'deny' }
+    - { direction: 'outgoing', policy: 'allow' }
+
+# HTTP & HTTPS ports hardcoded. Wouldn't be very friendly to browsers without this convention..
+- name: Set UFW rules
+  ufw:
+    rule: "{{ item.rule }}"
+    port: "{{ item.port }}"
+    proto: "{{ item.proto }}"
+  with_items:
+    - { rule: 'limit', port: "{{ ansible_ssh_port }}", proto: 'tcp' }
+    - { rule: 'allow', port: "80", proto: 'tcp' }
+    - { rule: 'allow', port: "443", proto: 'tcp' }
+
+- name: UFW enabled
+  ufw:
+    state: enabled

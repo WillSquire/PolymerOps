@@ -21,6 +21,7 @@
   become_method: sudo
   roles:
     - common
+    - ufw
     - apache
     - node
     - bower

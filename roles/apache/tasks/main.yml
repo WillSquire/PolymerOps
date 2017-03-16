@@ -27,7 +27,7 @@
     name: apache2
     enabled: yes
 
-- name: Restart apache
+- name: Restart Apache
   service:
     name: apache2
     state: restarted
