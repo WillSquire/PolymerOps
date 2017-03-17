@@ -115,7 +115,12 @@ which are set to `limit`, `allow` and `allow` respectively.
 Polymer handles 404s on the frontend, as such Apache is setup to 
 redirect all traffic without a file extension (or requests 
 that don't contain a `.` followed by at least one character) 
-to the app entry point (`index.html` by default).
+to the app entry point (`index.html` by default). Apache's
+`access.log` and `error.log` are both written to two places
+(in the local project directory and in the global apache log
+directory). This means log readers (such as Fail2Ban) do not 
+need to know about individual project logs and can read
+the server log as a whole.
 
 #### Bower
 `bower update` is run on each deployment to install or update
