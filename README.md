@@ -117,6 +117,10 @@ redirect all traffic without a file extension (or requests
 that don't contain a `.` followed by at least one character) 
 to the app entry point (`index.html` by default).
 
+#### Bower
+`bower update` is run on each deployment to install or update
+packages in the app's `bower.json`.
+
 Usage
 -----
 ### Development
@@ -167,7 +171,11 @@ Future
 - Test Windows support (so far tested on Mac. Linux *shouldn't* have issues)
 - Add Polymer-CLI build upon deploying to production
 - Add conditional logic for Ansible to prevent it saying 'changed' when the state hasn't (i.e. logs creation)
+- Disable remote root login
+- Disable password authentication
+- Configure timezones and NTP synchronisation
 - Add fail2ban
+- Consider adding swapfile
 - Consider switching Apache to NGINX when NGINX has HTTP2 Push support
     
 License
