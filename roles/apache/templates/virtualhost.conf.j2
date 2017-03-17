@@ -6,6 +6,7 @@
     DocumentRoot {{ document_root }}
     RewriteEngine On
     RewriteRule "!\.+" "{{ entrypoint }}"
-    ErrorLog {{ logs_dir }}/error.log
+    ErrorLog "|/usr/bin/tee -a {{ logs_dir }}/error.log ${APACHE_LOG_DIR}/error.log"
     CustomLog {{ logs_dir }}/access.log combined
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>

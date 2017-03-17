@@ -23,6 +23,7 @@
     - common
     - ufw
     - apache
+    - fail2ban
     - node
     - bower
     - polymer
