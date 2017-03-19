@@ -106,6 +106,9 @@ Vagrant can read them (see Ansible's
 Below are details regarding the configuration performed by 
 Ansible for each piece of technology installed:
 
+#### SSH
+`PasswordAuthentication` is set to false.
+
 #### UFW
 Firewall defaults to `deny` all traffic in and `allow` all 
 traffic out on all ports apart from `22`, `80` and `443` on `tcp`, 
@@ -184,7 +187,6 @@ Future
 - Test Windows support (so far tested on Mac. Linux *shouldn't* have issues)
 - Add Polymer-CLI build upon deploying to production
 - Disable remote root login
-- Disable password authentication
 - Configure timezones and NTP synchronisation
 - Add mod_evasive
 - Consider adding swapfile

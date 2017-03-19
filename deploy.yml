@@ -21,6 +21,7 @@
   become_method: sudo
   roles:
     - common
+    - ssh
     - ufw
     - apache
     - fail2ban
