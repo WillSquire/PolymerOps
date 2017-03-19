@@ -1,7 +1,8 @@
 ---
 
 - name: Aptitude Install
-  command: apt-get -y install aptitude
+  apt:
+    name: aptitude
 
 - name: Aptitude Cache Update
   apt:

@@ -2,32 +2,30 @@
 
 # mod_http2 is not yet included with standard apache2 package.
 # Different branch is needed. See: https://launchpad.net/~ondrej/+archive/ubuntu/apache2
-- name: Set Apache repository
+- name: Apache repository set
   apt_repository:
     repo: 'ppa:ondrej/apache2'
 
-- name: Apache install
+- name: Apache installed
   apt:
     name: apache2
 
-- name: Enable Apache modules
+- name: Apache modules enabled
   apache2_module:
     name: "{{ item }}"
     state: present
   with_items:
-     - deflate
-     - expires
-     - headers
-     - http2
-     - rewrite
-     - socache_shmcb
+    - deflate
+    - expires
+    - headers
+    - http2
+    - rewrite
+    - socache_shmcb
+  notify:
+    - Restart Apache
 
-- name: Enable Apache startup
+- name: Apache started & enabled on boot
   service:
     name: apache2
+    state: started
     enabled: yes
-
-- name: Restart Apache
-  service:
-    name: apache2
-    state: restarted

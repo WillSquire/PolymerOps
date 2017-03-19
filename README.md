@@ -122,6 +122,14 @@ directory). This means log readers (such as Fail2Ban) do not
 need to know about individual project logs and can read
 the server log as a whole.
 
+#### Fail2Ban
+Default active jails are `sshd`, `sshd-ddos`, `apache-auth`,
+`apache-badbots`, `apache-noscript`, `apache-overflows` and 
+`apache-nohome`. Some of these settings (such as 
+`apache-noscript`) depend on the application and other 
+content being hosted on the server. I.e. `apache-noscript` 
+should be disabled if PHP is also being run on the server.
+
 #### Bower
 `bower update` is run on each deployment to install or update
 packages in the app's `bower.json`.
@@ -175,12 +183,12 @@ Future
 ------
 - Test Windows support (so far tested on Mac. Linux *shouldn't* have issues)
 - Add Polymer-CLI build upon deploying to production
-- Add conditional logic for Ansible to prevent it saying 'changed' when the state hasn't (i.e. logs creation)
 - Disable remote root login
 - Disable password authentication
 - Configure timezones and NTP synchronisation
-- Add fail2ban
+- Add mod_evasive
 - Consider adding swapfile
+- Consider switching n for NVM
 - Consider switching Apache to NGINX when NGINX has HTTP2 Push support
     
 License

@@ -1,5 +1,18 @@
 ---
 
-- name: Fail2Ban install
+- name: Fail2Ban installed
   apt:
     name: fail2ban
+
+- name: Fail2Ban started & enabled on boot
+  service:
+    name: fail2ban
+    state: started
+    enabled: yes
+
+- name: Fail2Ban config set
+  template:
+    src: roles/fail2ban/templates/jail.local.j2
+    dest: /etc/fail2ban/jail.local
+  notify:
+    - Restart Fail2Ban

@@ -22,8 +22,12 @@
     name: n
     global: yes
 
+# TODO: n doesn't give feedback when the version is changed (only when it's downloaded).
+# Consider trying alternatives like NVM
 - name: Node install
   command: "n {{ node_version }}"
+  register: nodeinstall
+  changed_when: "nodeinstall.stdout != ''"
 
 - name: Set NPM version
   npm:
