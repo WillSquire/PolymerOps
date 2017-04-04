@@ -4,3 +4,4 @@
   npm:
     name: polymer-cli
     global: yes
+    version: "{{ polymer_cli_version }}"

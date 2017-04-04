@@ -1,4 +1,4 @@
 ---
 
 - name: Polymer build
-  command: "polymer build"
+  raw: "cd {{ app_dir }} && polymer build"

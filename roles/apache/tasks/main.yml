@@ -10,6 +10,15 @@
   apt:
     name: apache2
 
+- name: Apache modules config set
+  template:
+    src: "roles/apache/templates/{{ item }}.conf.j2"
+    dest: "/etc/apache2/mods-available/{{ item }}.conf"
+  with_items:
+    - expires
+  notify:
+    - Restart Apache
+
 - name: Apache modules enabled
   apache2_module:
     name: "{{ item }}"
