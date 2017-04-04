@@ -137,6 +137,9 @@ should be disabled if PHP is also being run on the server.
 `bower update` is run on each deployment to install or update
 packages in the app's `bower.json`.
 
+#### Polymer CLI
+`polymer build` is run when deploying to non-development machines.
+
 Usage
 -----
 ### Development
