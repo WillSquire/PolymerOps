@@ -12,6 +12,7 @@ webserver_user: www-data
 domain: example.dev
 admin_email: example@example.com
 http_port: 80
+https: false
 entrypoint: "/index.html"
 
 # Directory

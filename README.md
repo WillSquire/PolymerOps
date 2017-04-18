@@ -8,12 +8,10 @@ PolymerOps is a DevOps project for [Polymer] that automates tasks
 like running, deploying and configuring Polymer server 
 environments from development to production, as well as 
 providing a local development environment VM (virtual machine)
-for building your web app. Products like
-[Firebase](https://firebase.google.com) and 
-[GoogleCloud](https://cloud.google.com) are awesome pieces of
-technology, but for deployment on other servers where you 
-control the infrastructure yourself, then PolymerOps provides 
-a strong structure for that.
+for building your web app. When developing in a team and 
+deploying to servers that require full control of the 
+infrastructure and orchestration, PolymerOps can provide a 
+foundation for these type of requirements.
 
 PolymerOps contains the following pre-configured tools for 
 use with Polymer:
@@ -123,7 +121,8 @@ to the app entry point (`index.html` by default). Apache's
 (in the local project directory and in the global apache log
 directory). This means log readers (such as Fail2Ban) do not 
 need to know about individual project logs and can read
-the server log as a whole.
+the server log as a whole. If `https` is set to true,
+Apache redirects requests from HTTP to HTTPS.
 
 #### Fail2Ban
 Default active jails are `sshd`, `sshd-ddos`, `apache-auth`,

@@ -5,6 +5,10 @@
     ServerAlias www.{{ domain }}
     DocumentRoot {{ document_root }}
     RewriteEngine On
+    {% if https == true %}
+    RewriteCond %{HTTPS} off
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L,QSA]
+    {% endif %}
     RewriteRule "!\.+" "{{ entrypoint }}"
     ErrorLog "|/usr/bin/tee -a {{ logs_dir }}/error.log ${APACHE_LOG_DIR}/error.log"
     CustomLog {{ logs_dir }}/access.log combined
