@@ -5,14 +5,37 @@
     ServerAlias www.{{ domain }}
     DocumentRoot {{ document_root }}
     RewriteEngine On
-    {% if https == true %}
-    RewriteCond %{HTTPS} off
+{% if https == true %}
     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L,QSA]
-    {% endif %}
+{% else %}
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^ %{REQUEST_SCHEME}://%1%{REQUEST_URI} [R=301,L,QSA]
+    RewriteRule "!\.+" "{{ entrypoint }}"
+{% endif %}
+    ErrorLog "|/usr/bin/tee -a {{ logs_dir }}/error.log ${APACHE_LOG_DIR}/error.log"
+    CustomLog {{ logs_dir }}/access.log combined
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+{% if https == true %}
+<IfModule mod_ssl.c>
+<VirtualHost *:{{ https_port }}>
+    Protocols h2 http/1.1
+    ServerAdmin {{ admin_email }}
+    ServerName {{ domain }}
+    ServerAlias www.{{ domain }}
+    DocumentRoot {{ document_root }}
+    RewriteEngine On
     RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
     RewriteRule ^ %{REQUEST_SCHEME}://%1%{REQUEST_URI} [R=301,L,QSA]
     RewriteRule "!\.+" "{{ entrypoint }}"
     ErrorLog "|/usr/bin/tee -a {{ logs_dir }}/error.log ${APACHE_LOG_DIR}/error.log"
     CustomLog {{ logs_dir }}/access.log combined
     CustomLog ${APACHE_LOG_DIR}/access.log combined
+    SSLEngine on
+    SSLCertificateFile {{ ssl_certificate_file }}
+    SSLCertificateKeyFile {{ ssl_certificate_key_file }}
 </VirtualHost>
+</IfModule>
+
+{% endif %}

@@ -12,8 +12,11 @@ webserver_user: www-data
 domain: example.dev
 admin_email: example@example.com
 http_port: 80
-https: false
 entrypoint: "/index.html"
+https: false
+https_port: 443
+ssl_certificate_file:
+ssl_certificate_key_file:
 
 # Directory
 project_dir: "/var/www/{{ user }}"
