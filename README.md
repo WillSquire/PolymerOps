@@ -122,7 +122,8 @@ to the app entry point (`index.html` by default). Apache's
 directory). This means log readers (such as Fail2Ban) do not 
 need to know about individual project logs and can read
 the server log as a whole. If `https` is set to true,
-Apache redirects requests from HTTP to HTTPS.
+Apache redirects requests from HTTP to HTTPS. Strips and 
+redirects `www.` requests to non `www.` by default.
 
 #### Fail2Ban
 Default active jails are `sshd`, `sshd-ddos`, `apache-auth`,
