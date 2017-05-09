@@ -20,6 +20,7 @@ ssl_certificate_key_file:
 
 # Directory
 project_dir: "/var/www/{{ user }}"
+app_dir: "{{ project_dir }}/app"
 #document_root: "{{ project_dir }}/app/build/bundled" # For HTTP
 document_root: "{{ project_dir }}/app/build/unbundled" # For HTTP2 Push
 logs_dir: "{{ project_dir }}/logs"

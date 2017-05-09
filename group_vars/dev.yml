@@ -21,7 +21,8 @@ ssl_certificate_key_file:
 
 # Directories
 project_dir: "/var/www/{{ user }}"
-document_root: "{{ project_dir }}/app"
+app_dir: "{{ project_dir }}/app"
+document_root: "{{ app_dir }}"
 logs_dir: "{{ project_dir }}/logs"
 
 # Permissions
